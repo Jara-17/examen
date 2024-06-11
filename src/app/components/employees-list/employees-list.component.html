@@ -1,0 +1,21 @@
+<h2 class="text-2xl text-gray-700 text-center my-2">Empleados</h2>
+
+<div class="space-y-4" *ngIf="employees.length">
+  <div *ngFor="let employee of employees" class="flex items-center justify-between p-4 bg-white rounded-lg shadow">
+    <div class="flex items-center space-x-4">
+      <img [src]="employee.avatarUrl" alt="Avatar" class="w-12 h-12 rounded-full">
+      <div>
+        <p class="font-medium">{{ employee.name }} {{ employee.lastName }}</p>
+        <p class="text-gray-500">{{ employee.position }}</p>
+        <p class="text-gray-500">{{ employee.phone }}</p>
+        <p *ngIf="employee.remote" class="text-green-500">Remote: Yes</p>
+      </div>
+    </div>
+    <div class="flex space-x-2">
+      <button (click)="markAsRemote(employee)" class="px-3 py-1 text-white bg-blue-500 rounded">Mark as Remote</button>
+      <button (click)="removeEmployee(employee)" class="px-3 py-1 text-white bg-red-500 rounded">Remove</button>
+    </div>
+  </div>
+</div>
+
+<p *ngIf="employees.length === 0"> No hay empleados registrados</p>

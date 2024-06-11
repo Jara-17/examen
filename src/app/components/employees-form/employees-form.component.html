@@ -1,0 +1,58 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="space-y-4 p-2">
+  <h2 class="text-2xl text-gray-700 text-center my-2">Añadir Empleado</h2>
+  <div class="flex flex-col md:flex-row items-center gap-4">
+    <div class="w-full">
+      <label class="text-lg text-gray-700" for="name">Nombre</label>
+      <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Name" type="text" id="name"
+        formControlName="name" />
+      <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched" class="text-red-500 text-sm">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="w-full">
+      <label class="text-lg text-gray-700" for="lastName">Apellido</label>
+      <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Last Name" type="text" id="lastName"
+        formControlName="lastName" />
+      <div *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched"
+        class="text-red-500 text-sm">
+        Last Name is required.
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <label class="text-lg text-gray-700" for="position">Posición</label>
+    <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Position" type="text" id="position"
+      formControlName="position" />
+    <div *ngIf="employeeForm.get('position')?.invalid && employeeForm.get('position')?.touched"
+      class="text-red-500 text-sm">
+      Position is required.
+    </div>
+  </div>
+
+  <div>
+    <label class="text-lg text-gray-700" for="phone">Télefono</label>
+    <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Phone" type="tel" id="phone"
+      formControlName="phone" />
+    <div *ngIf="employeeForm.get('phone')?.invalid && employeeForm.get('phone')?.touched" class="text-red-500 text-sm">
+      Phone is required and should be 10 digits.
+    </div>
+  </div>
+
+  <div>
+    <label class="flex items-center gap-x-2">
+      <input type="checkbox" formControlName="remote">
+      <span class="text-base text-gray-700">Remote</span>
+    </label>
+  </div>
+
+  <div class="mt-4">
+    <button type="submit"
+      class="disabled:bg-gray-700 inline-block w-full rounded-lg cursor-pointer bg-black px-5 py-3 font-medium text-white sm:w-auto"
+      [disabled]="employeeForm.invalid">
+      Add Employee
+    </button>
+  </div>
+</form>
